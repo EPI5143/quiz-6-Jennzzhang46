@@ -1,5 +1,9 @@
 libname classdat '/folders/myfolders/EPI5143';
 
+proc printto file='/folders/myfolders/EPI5143/Quiz6.text' new;
+
+options formchar="|----|+|---+=|-/\<>*";
+
 /***checking the contents of dataset NhrAbstracts***/
 proc contents data=classdat.Nencounter;
 run;
@@ -92,25 +96,27 @@ by EncPatWID;
 countt=count + counte;
 run;
 
-options formchar="|----|+|---+=|-/\<>*";
 proc freq data=Q4;
 tables countt;
 run;
 
+proc printto; run;
+
 /***ANSWER: I got the same answer as the frequency table in Q3 for the variable countb***/
 /***I am using SAS University and there is no non-HTML option to display the output as the SAS program***/
-countt	Frequency	Percent	Cumulative
-Frequency	Cumulative
-Percent
-1	2556	88.41	2556	88.41
-2	270	9.34	2826	97.75
-3	45	1.56	2871	99.31
-4	14	0.48	2885	99.79
-5	3	0.10	2888	99.90
-6	1	0.03	2889	99.93
-7	1	0.03	2890	99.97
-12	1	0.03	2891	100.00
+/***Below is the output using printto statement***/
 
+                                                                       Cumulative    Cumulative
+                                    countt    Frequency     Percent     Frequency      Percent
+                                    -----------------------------------------------------------
+                                         1        2556       88.41          2556        88.41  
+                                         2         270        9.34          2826        97.75  
+                                         3          45        1.56          2871        99.31  
+                                         4          14        0.48          2885        99.79  
+                                         5           3        0.10          2888        99.90  
+                                         6           1        0.03          2889        99.93  
+                                         7           1        0.03          2890        99.97  
+                                        12           1        0.03          2891       100.00  
 
 
 
