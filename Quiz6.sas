@@ -69,13 +69,14 @@ run;
 
 /***ANSWER: 2891/2891 = 100%***/
 
-/***Q4***/
+/***Q4 to confirm freqency table results for variable countb in previous question***/
 /***make sure there is no missing value for encounter type in my dataset***/
 proc freq data=Quiz6;
 tables EncVisitTypeCd;
 run;
 
-/***merge dataset from Q1 and Q2 to check the countb frequency table from Q3***/
+/***there is no missing value which means every patient should have at least one encounter type that was inpatient or emergency***/
+/***merge dataset from Q1 and Q2***/
 proc sort data=Q1;
 by EncPatWID;
 run;
@@ -84,6 +85,7 @@ proc sort data=Q2;
 by EncPatWID;
 run;
 
+/***make new variable to count total encounters***/
 data Q4;
 merge Q1 Q2;
 by EncPatWID;
@@ -95,8 +97,8 @@ proc freq data=Q4;
 tables countt;
 run;
 
-/***ANSWER: Got same answer as the frequency table in Q3 for countb***/
-/***I am using SAS University and there is no non-HTML option to display the output the same way as SAS program***/
+/***ANSWER: I got the same answer as the frequency table in Q3 for the variable countb***/
+/***I am using SAS University and there is no non-HTML option to display the output as the SAS program***/
 countt	Frequency	Percent	Cumulative
 Frequency	Cumulative
 Percent
